@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.placeholder {
+    height: 30px;
+    position: relative;
+}
+.error {
+    padding-top: 10px;
+    position: absolute;
+    color: #ef233c;
+    font-size: 0.7em;
+}
+header {
+    text-align: center;
+    background-image: url("https://cdn.pixabay.com/photo/2018/05/28/13/14/dumbell-3435990_960_720.jpg");
+    background-position: center;
+    color: #f2f2f2;
+    font-size: 1.5em;
+    height: 250px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+form {
+    color: #845a94;
+    border-radius: 15px;
+    padding: 15px 40px 70px 40px;
+    transform: translateY(-150px);
+    width: 65vw;
+    background-color: #f2f2f2;
+    margin: auto;
+    font-size: 1.4em;
+    box-shadow: 10px 10px 13px rgba(0, 0, 0, 0.7);
+}
+span.icone {
+    position: relative;
+    float: right;
+    margin-right: 10px;
+}
+body {
+    background: url("https://cdn.pixabay.com/photo/2017/07/21/09/35/muscles-2525200_960_720.jpg") no-repeat right;
+    background-size: cover;
+}
+.justify {
+    max-width: 550px;
+    margin: auto;
+}
+input {
+    float: right;
+    font-size: 0.8em;
+    padding: 7px;
+    border: none;
+    background-color: transparent;
+    border-bottom: solid #b27ac7 2px;
+}
+.submit {
+    background-color: #b27ac7;
+    color: #f2f2f2;
+    border: none;
+    border-radius: 54px;
+    text-align: center;
+    font-size: 1.2em;
+    margin: 40px;
+    padding: 10px;
+}
+
+.select {
+    float: right;
+    position: absolute;
+    left: 38vw;
+    font-size: 0.8em;
+    border: none;
+    background-color: transparent;
+    border-bottom: solid #b27ac7 2px;
+    color: #474747
+}
+.icone {
+    color: #474747;
+}
+
+
+
