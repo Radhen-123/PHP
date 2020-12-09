@@ -1,5 +1,6 @@
 <?php
 require_once('database.php');
+require_once ('file_util.php');
 
 if (session_status() == PHP_SESSION_NONE)
 {
@@ -200,14 +201,30 @@ elseif ($_SESSION['typeID'] == 2)
                   <th>Code</th>
                   <th>Name</th>
                   <th class="right">Price</th>
+                  <th class="right">Images</th>
               </tr>
           </thead>
           <tbody>
-              <?php foreach ($products as $product) : ?>
+              <?php
+              foreach ($products as $product) :
+                  ?>
               <tr>
                   <td><?php echo $product['productCode']; ?></td>
                   <td><?php echo $product['productName']; ?></td>
                   <td class="right"><?php echo $product['listPrice']; ?></td>
+                  <td><?php
+                      require_once ('file_util.php');
+                      if (is_file($image_dir_path.DIRECTORY_SEPARATOR.$product['productCode'].'.png') )
+                      {
+                          $path = $image_dir_path.DIRECTORY_SEPARATOR.$product['productCode'].'.png';
+                          print "<img src='$path' style='max-width: 150px; max-height: 150px;'>";
+                      }
+                      else
+                      {
+                          $path = $image_dir_path.DIRECTORY_SEPARATOR.'noImage.png';
+                          print "<img src='$path' style='max-width: 100px; max-height: 100px'>";
+                      }
+                      ?></td>
                   <td>
                     <!-- We are only showing the Delete button for this form -->
                     <form action="delete_product.php" method="post">
@@ -219,6 +236,9 @@ elseif ($_SESSION['typeID'] == 2)
                       <!-- This hidden field is used to store the categoryID -->
                       <input type="hidden" name="category_id_hidden"
                              value="<?php echo $product['categoryID']; ?>">
+
+                        <input type="hidden" name="product_code_hidden"
+                               value="<?php echo $product['productCode']; ?>">
 
                       <!-- This is the button that we actually see -->
                       <input class="btn btn-warning" type="submit" value="Delete">

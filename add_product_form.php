@@ -42,7 +42,7 @@ $statement->closeCursor();
         <h1>Add Product</h1>
 
         <form action="insert_product.php" method="post"
-              id="add_product_form">
+              id="add_product_form" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label>Category:</label>
@@ -83,6 +83,10 @@ $statement->closeCursor();
                 <?php } ?>
                 <input class="form-control" type="text" name="price" id="price"
                 value="<?php echo htmlspecialchars($price); ?>"><br>
+            </div>
+
+            <div class="formgroup">
+                <input type = "file" name="imageFile" ><br><br>
             </div>
 
             <label>&nbsp;</label>

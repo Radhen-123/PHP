@@ -1,0 +1,5 @@
+insert_product.php, 2020-12-09 06:45:20, 1, test, class, 123, Success, 00000
+insert_product.php, 2020-12-09 06:47:28, 1, asdf, Asdf, 123, Success, 00000
+insert_product.php, 2020-12-09 06:48:16, 1, asdf, Asdf, 123, Failure, 23000
+insert_product.php, 2020-12-09 06:50:01, 1, Code, 123, 123, Success, 00000
+insert_product.php, 2020-12-09 06:51:12, 1, Fial, jksna, 12, Success, 00000

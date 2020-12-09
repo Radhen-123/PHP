@@ -54,8 +54,37 @@ if($price_error!='' || $name_error!=''  || $code_error!=''  || $category_error!=
     $statement->bindValue(':name', $name);
     $statement->bindValue(':price', $price);
     $statement->execute();
+    $errorCode = $statement->errorCode();
     $statement->closeCursor();
 
+
+    if (isset($_FILES['imageFile']))
+    {
+        $fileName = $codeInput.'.png';
+        if (!empty($_FILES['imageFile']) && exif_imagetype($_FILES['imageFile']['tmp_name']))
+        {
+            $sourceLocation = $_FILES['imageFile']['tmp_name'];
+            $targetLocation = getcwd() . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $fileName;
+            move_uploaded_file($sourceLocation, $targetLocation);
+        }
+    }
+
+    $fileName = date("Y-m-d") . ".csv";
+    $logPath = getcwd() . DIRECTORY_SEPARATOR . "Logs" . DIRECTORY_SEPARATOR . $fileName;
+    $seperator = ", ";
+    $logMessage = "insert_product.php" . $seperator . date("Y-m-d H:i:s") . $seperator . $category_id . $seperator . $codeInput . $seperator . $name . $seperator . $price;
+
+    if ($errorCode != "00000")
+    {
+        $logMessage .= $seperator . "Failure";
+    }
+    else
+    {
+        $logMessage .= $seperator . "Success";
+    }
+    $logMessage .= $seperator . $errorCode . "\n";
+
+    file_put_contents($logPath, $logMessage, FILE_APPEND | LOCK_EX);
     // Display the Product List page
     include ('index.php');
 }
